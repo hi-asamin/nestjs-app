@@ -14,6 +14,9 @@
       style="cursor: pointer;">
       テナント管理画面
     </router-link>
+    <br>
+    <button @click="ping">ping</button>
+    <p>{{ message }}</p>
   </div>
 </template>
 
@@ -21,12 +24,23 @@
 export default {
   components: {},
   data () {
-    return {}
+    return {
+      message: ''
+    }
   },
   computed: {},
   mixins: [],
   watch: {},
-  methods: {},
+  methods: {
+    ping: async function() {
+      try {
+        const message = await this.$axios.get('/')
+        this.message = message.data
+      } catch (error) {
+        this.message = 'Server is Not Running...'
+      }
+    }
+  },
   // 以下、ライフサイクル系処理
   beforeCreate: function() {
   },

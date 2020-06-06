@@ -1,21 +1,6 @@
 version: '3.5'
 services:
-  mysql:
-    build: rdb
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ./rdb/mysql-data:/var/lib/mysql
-      - ./rdb/conf.d:/etc/mysql/conf.d
-      - ./rdb/log:/var/log/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: sample
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      TZ: 'Asia/Tokyo'
-    ports:
-        - "3306:3306"
-  psql:
+  rdb:
     image: postgres:latest
     environment:
       - POSTGRES_USER=root
