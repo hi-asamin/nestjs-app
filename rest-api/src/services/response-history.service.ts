@@ -12,10 +12,19 @@ export class ResponseHistoryService {
     private readonly responseHistoryRepository: ResponseHistoryRepository
   ) {}
 
+  /**
+   * 応対履歴の一覧を取得する
+   * 
+   * @returns {ResponseHistory} 応対履歴一覧
+   */
   async findAll(): Promise<ResponseHistory[]> {
     return await this.responseHistoryRepository.find()
   }
 
+  /**
+   * カスタムクエリーのサンプル
+   * 引数に指定した名前の情報を取得する
+   */
   async customQuery(): Promise<ResponseHistory[]> {
     return await this.responseHistoryRepository.customQuery('test')
   }
@@ -31,7 +40,11 @@ export class ResponseHistoryService {
     return responseHistory;
   }
 
-  // 応対履歴を追加する
+  /**
+   * 応対履歴を登録する
+   * 
+   * @param {CreateResponseHistoryDto} responseHistory - 登録内容
+   */
   async insert(responseHistory: CreateResponseHistoryDto): Promise<void> {
     await this.responseHistoryRepository.insert({
       ...responseHistory
