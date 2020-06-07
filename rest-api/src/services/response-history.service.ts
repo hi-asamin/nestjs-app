@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 
 import { ResponseHistory } from 'src/entities/response-history.entity';
 import { ResponseHistoryRepository } from 'src/repositories/response-history.repository'
@@ -18,7 +17,7 @@ export class ResponseHistoryService {
   }
 
   async customQuery(): Promise<ResponseHistory[]> {
-    return await this.responseHistoryRepository.customQuery()
+    return await this.responseHistoryRepository.customQuery('test')
   }
 
   // 指定された名前の応対履歴を検索する
