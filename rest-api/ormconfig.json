@@ -7,7 +7,7 @@
   "database": "sample",
   "synchronize": true,
   "entities": [
-      "dist/entity/**/*.entity.js"
+      "dist/entities/**/*.entity.js"
   ],
   "migrations": [
       "dist/migrations/**/*.js"
