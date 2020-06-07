@@ -2,16 +2,16 @@ const user = {
   namespaced: true,
   state: {
     id: 1,
-    name: 'true',
+    name: 'sam',
   },
   mutations: {
     SET_USER(state, user) {
       state.id = user.id
-      state.name = user.namespaced
+      state.name = user.name
     }
   },
   actions: {
-    setDraewer({ commit }, user) {
+    setUser({ commit }, user) {
       commit("SET_USER", user)
     }
   }
