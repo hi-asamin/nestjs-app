@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, HttpCode, HttpStatus, HttpException, Param } from '@nestjs/common'
-import { ResponseHistoryService } from 'src/services/response-history/response-history.service'
+import { ResponseHistoryService } from 'src/services/response-history.service'
 import { ResponseHistory } from 'src/entities/response-history.entity'
 import { CreateResponseHistory } from 'src/interfaces/create-response-history.interface';
 
@@ -15,8 +15,8 @@ export class ResponseHistoryController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createResponseHistory: CreateResponseHistory) {
-    const user = await this.responseHistoryService.findByName(createResponseHistory.name)
-    if (user) {
+    const responseHistory = await this.responseHistoryService.findByName(createResponseHistory.name)
+    if (responseHistory) {
       throw new HttpException(
         {
           status: HttpStatus.CONFLICT,

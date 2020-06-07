@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ResponseHistoryService } from './response-history.service';
+import { ResponseHistoryService } from '../response-history.service';
 
 describe('ResponseHistoryService', () => {
   let service: ResponseHistoryService;
