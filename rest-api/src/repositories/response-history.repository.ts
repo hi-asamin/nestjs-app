@@ -10,7 +10,7 @@ export class ResponseHistoryRepository extends Repository<ResponseHistory> {
       select
         *
       from
-        response_history
+        t_response_history
       where
         name = $1`;
     const args = [ name ];

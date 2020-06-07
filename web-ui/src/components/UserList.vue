@@ -29,14 +29,9 @@ export default {
     fetchData: async function() {
       try {
         const users = await this.$axios.get('/users')
-        console.log(JSON.stringify(users.data[0]))
         this.setUser(users.data[0])
       } catch (error) {
-        const user = {
-          id: 0,
-          name: 'user not found'
-        }
-        this.setUser(user)
+        // サンプルで書いてるだけなので特に何もしない
       }
     }
   },

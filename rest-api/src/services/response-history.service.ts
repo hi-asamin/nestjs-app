@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { ResponseHistory } from 'src/entities/response-history.entity';
 import { ResponseHistoryRepository } from 'src/repositories/response-history.repository'
-import { CreateResponseHistory } from 'src/interfaces/create-response-history.interface';
+import { CreateResponseHistoryDto } from 'src/interfaces/response-history.dto';
 
 @Injectable()
 export class ResponseHistoryService {
@@ -32,7 +32,7 @@ export class ResponseHistoryService {
   }
 
   // 応対履歴を追加する
-  async insert(responseHistory: CreateResponseHistory): Promise<void> {
+  async insert(responseHistory: CreateResponseHistoryDto): Promise<void> {
     await this.responseHistoryRepository.insert({
       ...responseHistory
     });

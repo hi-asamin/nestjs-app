@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, HttpCode, HttpStatus, HttpException, Param } from '@nestjs/common'
+import { Controller, Get, Post, Put, Body, HttpCode, HttpStatus, HttpException, Param } from '@nestjs/common'
 import { ResponseHistoryService } from 'src/services/response-history.service'
 import { ResponseHistory } from 'src/entities/response-history.entity'
-import { CreateResponseHistory } from 'src/interfaces/create-response-history.interface';
+import { CreateResponseHistoryDto, UpdateResponseHistoryDto } from 'src/interfaces/response-history.dto';
 
 @Controller('response-history')
 export class ResponseHistoryController {
@@ -14,7 +14,7 @@ export class ResponseHistoryController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() createResponseHistory: CreateResponseHistory) {
+  async create(@Body() createResponseHistory: CreateResponseHistoryDto) {
     const responseHistory = await this.responseHistoryService.findByName(createResponseHistory.name)
     if (responseHistory) {
       throw new HttpException(
@@ -37,5 +37,13 @@ export class ResponseHistoryController {
       );
     }
     return;
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id') id: number,
+    @Body() updateResponseHistory: UpdateResponseHistoryDto) {
+    
+    return updateResponseHistory;
   }
 }

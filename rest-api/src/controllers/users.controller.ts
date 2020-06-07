@@ -1,25 +1,25 @@
 import { Controller, Get, Post, Body, HttpCode, HttpStatus, HttpException, Param } from '@nestjs/common'
-import { CreateUserDto } from '../users/create-user.dto'
+import { CreateUsersDto, UpdateUsersDto } from 'src/interfaces/users.dto'
 import { UsersService } from '../services/users.service'
-import { User } from '../entities/user.entity'
+import { Users } from '../entities/users.entity'
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get()
-  async findAll(): Promise<User[]> {
+  async findAll(): Promise<Users[]> {
     return this.usersService.index()
   }
 
   @Get(':name')
-  async findOne(@Param('name') name: string): Promise<User> {
+  async findOne(@Param('name') name: string): Promise<Users> {
     return this.usersService.findByName(name)
   }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  async create(@Body() createUserDto: CreateUserDto) {
+  async create(@Body() createUserDto: CreateUsersDto) {
     const user = await this.usersService.findByName(createUserDto.name)
     if (user) {
       throw new HttpException(
