@@ -20,7 +20,12 @@ export class ResponseHistoryService {
     return await this.responseHistoryRepository.customQuery('test')
   }
 
-  // 指定された名前の応対履歴を検索する
+  /**
+   * 名前を指定して応対履歴を取得する
+   *
+   * @param name - 応対履歴名
+   * @returns {ResponseHistory} 指定した名前の応対履歴
+   */
   async findByName(name: string): Promise<ResponseHistory> {
     const responseHistory = await this.responseHistoryRepository.findOne({ where: { name } });
     return responseHistory;

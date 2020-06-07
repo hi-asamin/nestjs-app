@@ -6,8 +6,8 @@ import store from './store'
 Vue.config.productionTip = false
 
 // Axiosのカスタマイズ
-import http from './http';
-Vue.prototype.$axios = http;
+import http from './http'
+Vue.prototype.$axios = http
 
 new Vue({
   router,

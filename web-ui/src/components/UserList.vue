@@ -24,7 +24,6 @@ export default {
       'setUser'
     ]),
     initialize: function() {
-      this.loading = true;
       this.fetchData();
     },
     fetchData: async function() {
@@ -33,7 +32,11 @@ export default {
         console.log(JSON.stringify(users.data[0]))
         this.setUser(users.data[0])
       } catch (error) {
-        console.log('failed to get user list');
+        const user = {
+          id: 0,
+          name: 'user not found'
+        }
+        this.setUser(user)
       }
     }
   },

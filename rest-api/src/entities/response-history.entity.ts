@@ -1,10 +1,10 @@
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm'
 
-@Entity()
+@Entity('t_response_history')
 export class ResponseHistory extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 16 })
+  @Column({ name: 'name', length: 16 })
   name: string;
 }

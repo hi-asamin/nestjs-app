@@ -1,0 +1,14 @@
+default:
+  type: postgres
+  host: localhost
+  port: 5432
+  username: root
+  password: root
+  database: sample
+  synchronize: true
+  entities:
+    - dist/entities/**/*.entity.js
+  migrations:
+    - dist/migrations/**/*.js
+  logging: true
+  logger: file
